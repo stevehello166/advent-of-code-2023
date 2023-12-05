@@ -1,4 +1,4 @@
-use std::{fs::File, io::{self, BufRead, BufReader, Lines}, path::{Path, self, PathBuf}};
+use std::{fs::File, io::{self, BufRead, BufReader}, path:: PathBuf};
 mod day2tests;
 
 
@@ -7,8 +7,8 @@ const GREEN: u32 = 14;
 const BLUE: u32 = 15;
 
 fn main () -> io::Result<()> {
-    //pt_1();
-    println!("{}", pt_2("assets/day2.txt".into()));
+    pt_1();
+    println!("PART TWO {}", pt_2("assets/day2.txt".into()));
     Ok(())
 }
 
@@ -77,7 +77,7 @@ fn pt_1 () {
         game += 1;
     }
     
-    println!("PART ONE{:?}", valid_games.iter().sum::<u32>());
+    println!("PART ONE {:?}", valid_games.iter().sum::<u32>());
     
 }
 
@@ -86,7 +86,6 @@ fn pt_2(filepath: PathBuf) -> u32{
     let reader = BufReader::new(file);
 
     let mut responsevec:Vec<u32> = Vec::new();
-    let mut game = 1;
     for line in reader.lines() {
         let line = line.expect("msg");
         let splitvec:Vec<&str> = line.split(';').collect();
@@ -100,11 +99,9 @@ fn pt_2(filepath: PathBuf) -> u32{
                 
                 if cstring.contains("red") {
                     redvec.push(cstring.to_string());
-                    println!("{}",cstring)
                 } else if cstring.contains("green") {
                     greenvec.push(cstring.to_string());
                 } else if cstring.contains("blue") {
-                    println!("{}",cstring);
                     bluevec.push(cstring.to_string());
                     
                 }
@@ -116,18 +113,14 @@ fn pt_2(filepath: PathBuf) -> u32{
 
         red_collect.sort();
         red_collect.reverse();
-        println!("highest red {}", red_collect[0]);
         green_collect.sort();
         green_collect.reverse();
-        println!("highest green {}", green_collect[0]);
         blue_collect.sort();
         blue_collect.reverse();
-        println!("highest blue {}", blue_collect[0]);
         
         responsevec.push(red_collect[0] * green_collect[0] * blue_collect[0]);
-        println!("{}", red_collect[0] * green_collect[0] * blue_collect[0]);
     }
 
     
-    return(responsevec.iter().sum::<u32>());
+    return responsevec.iter().sum::<u32>();
 }   

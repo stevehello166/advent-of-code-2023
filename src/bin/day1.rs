@@ -1,4 +1,4 @@
-use std::{fs::File, io::{BufReader, BufRead, self}, error::Error};
+use std::{fs::File, io::{BufReader, BufRead, self}};
 
 fn main () -> io::Result<()> {
     let file = File::open("assets/day1.txt")?;
