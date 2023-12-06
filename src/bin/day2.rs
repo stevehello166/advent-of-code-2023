@@ -55,6 +55,7 @@ fn pt_1 () {
                 }
             }
         }
+        println!("fart");
         let mut red_collect = get_numbers(redvec);
         let mut green_collect = get_numbers(greenvec);
         let mut blue_collect = get_numbers(bluevec);
